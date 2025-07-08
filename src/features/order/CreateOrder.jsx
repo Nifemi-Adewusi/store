@@ -2,7 +2,13 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { createOrder } from "../../services/apiRestaurant";
-import { Form, useActionData, useLoaderData, redirect } from "react-router-dom";
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  redirect,
+  useNavigation,
+} from "react-router-dom";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -36,7 +42,9 @@ const fakeCart = [
 
 function CreateOrder() {
   // const cart = useActionData();
-
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+  const formErrors = useActionData();
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
   // const originalCart = useLoaderData();
@@ -55,6 +63,7 @@ function CreateOrder() {
           <label>Phone number</label>
           <div>
             <input type="tel" name="phone" required />
+            {formErrors?.phone && <p>{formErrors.phone}</p>}
           </div>
         </div>
 
@@ -78,7 +87,9 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button>Order now</button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Placing Orders..." : "Order Now"}
+          </button>
         </div>
       </Form>
     </div>
@@ -91,6 +102,17 @@ export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   console.log(data);
+  const isValidNumber = isValidPhone(data.phone);
+  // console.log(isValidNumber);
+
+  const errors = {};
+  if (!isValidNumber) {
+    errors.phone =
+      "Please give us Your Correct Phone Number. We might need to contact you.";
+  }
+
+  if (Object.keys(errors).length > 0) return errors;
+
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
