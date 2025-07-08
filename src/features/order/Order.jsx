@@ -54,9 +54,4 @@ function Order() {
   );
 }
 
-export async function loadData({params}){
-  const order = await getOrder(params.orderId);
-  return order;
-}
-
 export default Order;
