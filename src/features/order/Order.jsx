@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 // Test ID: IIDSAT
 
 /* eslint-disable no-unused-vars */
@@ -7,9 +8,9 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
-import {useLoaderData} from 'react-router-dom';
-import {getOrder} from '../../services/apiRestaurant'
-
+import { useLoaderData } from "react-router-dom";
+import { getOrder } from "../../services/apiRestaurant";
+// import second from 'first'
 
 function Order() {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
@@ -52,6 +53,12 @@ function Order() {
       </div>
     </div>
   );
+}
+
+export async function loadData({ params }) {
+  console.log(params);
+  const order = await getOrder(params.orderId);
+  return order;
 }
 
 export default Order;
