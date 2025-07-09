@@ -18,6 +18,7 @@ function SearchOrder() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="h-10 w-52 rounded-md placeholder:text-center border border-yellow-300 md:w-72 md:h-20"
         placeholder="Search Order By ID"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
