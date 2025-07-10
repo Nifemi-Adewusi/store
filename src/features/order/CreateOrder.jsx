@@ -9,6 +9,7 @@ import {
   redirect,
   useNavigation,
 } from "react-router-dom";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -52,46 +53,52 @@ function CreateOrder() {
   // const originalCart = useLoaderData();
 
   return (
-    <div>
+    <div className="mt-8">
       <h2>Ready to order? Let&rsquo;s go!</h2>
 
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <input type="text" name="customer" required />
+        <div className="mt-9">
+          <label className="label" htmlFor="customer">
+            First Name
+          </label>
+          <input className="input" type="text" name="customer" required />
         </div>
 
         <div>
-          <label>Phone number</label>
+          <label className="label">Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input className="input" type="tel" name="phone" required />
             {formErrors?.phone && <p>{formErrors.phone}</p>}
           </div>
         </div>
 
         <div>
-          <label>Address</label>
+          <label className="label">Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input className="input" type="text" name="address" required />
           </div>
         </div>
 
-        <div>
+        <div className="flex items-center gap-5 mt-3 mb-3 ">
           <input
+            className="h-6 w-6 accent-yellow-400"
             type="checkbox"
             name="priority"
             id="priority"
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="text-sm font-bold sm:text-lg">
+            Want to yo give your order priority?
+          </label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button className="bg-yellow-400 font-semibold text-stone-800 py-3 px-4 inline-block tracking-wide rounded-full hover:bg-yellow-300 transition-colors duration-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed" disabled={isSubmitting}>
+
+          <Button disabled={isSubmitting}>
             {isSubmitting ? "Placing Orders..." : "Order Now"}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
