@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
-function LinkButton({ children }) {
-  return <div>{children}</div>;
+function LinkButton({ children, to }) {
+  return <Link to={to}>{children}</Link>;
 }
 
 export default LinkButton;
