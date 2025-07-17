@@ -78,7 +78,7 @@ function HireDriver() {
    {!showFilter &&  <div className='mt-8'>
         <h1 className="text-3xl font-bold mt-10 text-center">Hire a Driver</h1>
         <div className = "flex items-center">
-        <div className = "relative w-72 ml-4 my-6 max-[352px]:ml-[-1px]">
+        <div className = "relative w-72 ml-4 my-6 max-[352px]:ml-[-1px] pr-5">
             <input value={searchTerm}
                 onChange={
                 (e)=> setSearchTerm(e.target.value)

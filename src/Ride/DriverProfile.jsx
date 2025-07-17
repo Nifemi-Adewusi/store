@@ -77,7 +77,7 @@ function AboutDriver(){
         </div>
         <p className = "mt-3 tracking-wider">{driverName} was professional, courteous, and efficient throughout the entire trip. The vehicle was well-maintained, and his driving was smooth and safe. Will definitely book again.</p>
          <p className = "font-bold text-sm mt-8">Client rating</p>
-        <div className = "flex gap-3">
+        <div className = "flex gap-3 items-center">
         <img src = {stars}/>
            <p className="font-bold">(5.0)</p>
            <p className = "ml-8">48/hr-#264,000 Earned</p>
