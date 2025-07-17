@@ -70,10 +70,10 @@ function AboutDriver(){
 
         <h2 className = "font-bold text-xl mt-8">Reviews from past clients</h2>
         <p className = "font-bold text-sm mt-5">Client rating</p>
-        <div className = "flex gap-3">
+        <div className = "flex gap-3 items-center">
         <img src = {stars}/>
            <p className="font-bold">(5.0)</p>
-           <p className = "ml-8">24/hr-#132,000 Earned</p>
+           <p className = "ml-8 text-sm">24/hr-#132,000 Earned</p>
         </div>
         <p className = "mt-3 tracking-wider">{driverName} was professional, courteous, and efficient throughout the entire trip. The vehicle was well-maintained, and his driving was smooth and safe. Will definitely book again.</p>
          <p className = "font-bold text-sm mt-8">Client rating</p>
@@ -86,9 +86,9 @@ function AboutDriver(){
 }
 
 function MoreDetails(){
-    return <div className = "flex items-center gap-4 px-4 mt-4">
+    return <div className = "flex items-center gap-4 px-4 mt-4 ">
         <img src ={car}/>
-        <h1 className ="font-bold">Car Details</h1>
-        <p className = "ml-24">Plate No: LA 1234AG</p>
+        <h1 className ="font-bold text-sm">Car Details</h1>
+        <p className = "text-sm">Plate No: LA 1234AG</p>
     </div>
 }

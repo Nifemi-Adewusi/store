@@ -21,7 +21,8 @@ import samuel from './DriverImages/samuel.png';
 import {useNavigate} from 'react-router-dom';
 import { useState } from "react";
 import { useDriverContext } from './Flow';
-import DriverComponent from './DriverComponent'
+import DriverComponent from './DriverComponent';
+
 
 import checked from './home-images/checked.png';
 import cancel from "./home-images/cancel.png";
